@@ -1,0 +1,19 @@
+.gris{
+    background-color: rgb(61, 64, 71);
+    color: antiquewhite;
+}
+
+.menosBrillo{
+    filter: brightness(0.5);
+}
+
+.verde{
+    background-color: rgb(133, 184, 58);
+    color: antiquewhite;
+}
+
+.pie{
+    background-color: rgb(22, 78, 95);
+    
+}
+
