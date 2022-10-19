@@ -17,3 +17,22 @@
     
 }
 
+.cortada{
+    height: 700px;
+    object-fit:cover ;
+    object-position: bottom;
+    
+}
+
+@media (min-width:576px){
+    .textoResp{    
+         translate: 50% -50%;
+         width: 50%;
+    }
+}
+
+@media (min-width:1024px){
+    .textoResp{    
+        translate: 50% -50%
+    }
+}
