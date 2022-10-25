@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Conf Bs As</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./style.css">
+        <!-- CSS only -->  
+    </head>
+
+    <body>
+      <!-- NAVEGADOR -->  
+      <nav class="navbar navbar-expand-lg gris">
+        <div class="container-fluid">
+          <a href="/" class="d-flex text-white text-decoration-none navbar-brand col-4"> 
+            <span class="fs-4"><img src="./codoacodo.png" width="28%"> Conf Bs As</span>
+          </a>
+          <button class="navbar-toggler btn-close-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav fs-5">
+              <a class="nav-link active px-2 text-white" aria-current="page" href="./index.html#LaConferencia">La conferencia</a>
+              <a class="nav-link px-2 text-white-50" href="./index.html#LosOradores">Los oradores</a>
+              <a class="nav-link px-2 text-white-50" href="./index.html#LugarYFecha">El lugar y la fecha</a>
+              <a class="nav-link px-2 text-white-50" href="./index.html#ConvertiteEnOrador">Conviértete en orador</a>
+              <a class="nav-link px-2 text-success" href="#ComprarTickets">Comprar tickets</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- DESCUENTOS --> 
+      <section class="container col-8 py-5">
+        <div class=" row row-cols-1 row-cols-md-3 mb-3 text-center">
+            <div class="border border-primary border-2 py-4">
+                <h5>Estudiante</h5>
+                <p>Tienen un descuento</p>
+                <h5 id="descEstudiante">80%</h5>
+                <p class="fw-lighter text-secondary">*presentar documentación</p>
+            </div>
+            <div class="border border-success border-2 py-4">
+                <h5>Trainee</h5>
+                <p>Tienen un descuento</p>
+                <h5 id="descTrainee">50%</h5>
+                <p class="fw-lighter text-secondary">*presentar documentación</p>
+            </div>
+            <div class="border border-warning border-2 py-4">
+                <h5>Junior</h5>
+                <p>Tienen un descuento</p>
+                <h5 id="descJunior">15%</h5>
+                <p class="fw-lighter text-secondary">*presentar documentación</p>
+            </div>
+         </div>
+      </section>
+
+    
+
+      <!-- VENTA --> 
+      <section class="py-3 text-center container">
+        <div class="row py-lg-1">
+          <div class="col-lg-6 col-md-8 mx-auto">
+            <h6 class="fw-light m-0">VENTA</h6>
+            <h1 class="fw-semibold" >VALOR DE TICKET $<a id="precio">200</a></h1>
+          </div>
+        </div>
+      </section>
+
+      <form class="text-start container col-8" id="formularioEntero">
+        <div class="row ">
+          <div class="col p-1">
+            <input type="text" class="form-control" placeholder="Nombre" aria-label="First name">
+          </div>
+
+          <div class="col p-1">
+            <input type="text" class="form-control" placeholder="Apellido" aria-label="Last name">
+          </div>
+
+          <div class="col-12 p-1">
+            <input type="text" class="form-control" placeholder="Correo" aria-label="Correo">
+          </div>
+          
+          <div class="col p-1">
+            <label for="formGroupExampleInput" class="form-label">Cantidad</label>
+            <input type="text" class="form-control" id="cantidad" placeholder="Cantidad">
+          </div>
+
+          <div class="col p-1">
+            <label for="formGroupExampleInput" class="form-label">Categoria</label>
+            <select id="categoria" class="form-select" aria-label="Default select example">
+                <option value="estudiante">Estudiante</option>
+                <option value="trainee">Trainee</option>
+                <option value="junior">Junior</option>
+              </select>
+          </div>
+          <div class="col-12 p-1 py-4 input-group mb-3">
+            <span class="input-group-text bg-info bg-opacity-25">Total a pagar: $</span>
+            <input type="text" class="form-control form-control-lg bg-info bg-opacity-25 text-black " id="total" text: placeholder="" aria-label="totalAPagar" readonly>
+            
+          </div>
+          <div class="row p-0 m-0">
+          <button type="button" class="btn btn verde col m-1" id="botonBorrar">Borrar</button>
+          <button type="button" class="btn btn verde col m-1"id="botonResumen">Resumen</button>
+          </div>
+        </div>
+    </form>
+
+      
+      <footer class="d-flex justify-content-center py-4 pie">
+        <ul class="nav nav-pills ">
+          
+          <li><a href="#" class="nav-link px-sm-4 text-white">Preguntas frecuentes</a></li>
+          <li><a href="#" class="nav-link px-sm-4 text-white">Contáctanos</a></li>
+          <li><a href="#" class="nav-link px-sm-4 text-white">Prensa</a></li>
+          <li><a href="#" class="nav-link px-sm-4 text-white">Conferencias</a></li>
+          <li><a href="#" class="nav-link px-sm-4 text-white">Términos y Condiciones</a></li>
+          <li><a href="#" class="nav-link px-sm-4 text-white">Privacidad</a></li>
+          <li><a href="#" class="nav-link px-sm-4 text-white">Estudiantes</a></li>
+          
+        </ul>
+      </footer>
+
+      <script>
+          const valorDeTicket  = 200;
+          const descEstudiante = valorDeTicket*0.2
+          const descTrainee = valorDeTicket*0.5 
+          const descJunior = valorDeTicket*0.85
+
+          console.log(valorDeTicket)
+          console.log(descEstudiante)
+          console.log(descTrainee)
+          console.log(descJunior)
+
+
+          let calculaTotal = evento => { 
+            evento.preventDefault();   
+
+            let cantidad = parseInt((document.querySelector("input[placeholder='Cantidad']")).value)                      
+            let categoria = (document.getElementById('categoria')).value
+            let costoFinal   
+
+            if (categoria == "estudiante"){
+              costoFinal = descEstudiante * cantidad
+            }
+            else if (categoria =="trainee"){
+              costoFinal = descTrainee * cantidad
+            }
+            else{
+              costoFinal = descJunior * cantidad
+            }
+
+            let completarTotal = document.querySelector("input[aria-label='totalAPagar']")
+            completarTotal.value= costoFinal
+
+           }
+
+       let borraTodo = evento => { 
+            evento.preventDefault(); 
+            document.getElementById('formularioEntero').reset()
+         }  
+
+          const submit = document.getElementById('botonResumen')
+          submit.addEventListener('click',calculaTotal)
+
+          const borrar = document.getElementById('botonBorrar')
+          borrar.addEventListener('click',borraTodo)
+          
+          
+      
+      
+
+
+
+
+                        
+
+
+          
+          
+       
+      </script> 
+
+
+      
+
+        
+        <script src="" async defer></script>
+        
+        <!-- JavaScript Bundle with Popper -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    </body>
+</html>
