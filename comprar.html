@@ -40,13 +40,13 @@
             <div class="border border-primary border-2 py-4">
                 <h5>Estudiante</h5>
                 <p>Tienen un descuento</p>
-                <h5 id="descEstudiante">80%</h5>
+                <h5 id="descEstudiante"></h5>
                 <p class="fw-lighter text-secondary">*presentar documentación</p>
             </div>
             <div class="border border-success border-2 py-4">
                 <h5>Trainee</h5>
                 <p>Tienen un descuento</p>
-                <h5 id="descTrainee">50%</h5>
+                <h5 id="descTrainee"></h5>
                 <p class="fw-lighter text-secondary">*presentar documentación</p>
             </div>
             <div class="border border-warning border-2 py-4">
@@ -65,33 +65,34 @@
         <div class="row py-lg-1">
           <div class="col-lg-6 col-md-8 mx-auto">
             <h6 class="fw-light m-0">VENTA</h6>
-            <h1 class="fw-semibold" >VALOR DE TICKET $<a id="precio">200</a></h1>
+            <h1 class="fw-semibold" >VALOR DE TICKET $<a id="precio"></a></h1>
           </div>
         </div>
       </section>
 
-      <form class="text-start container col-8" id="formularioEntero">
+      <form class="text-start container col-8"  id="formularioEntero">
+
         <div class="row ">
           <div class="col p-1">
-            <input type="text" class="form-control" placeholder="Nombre" aria-label="First name">
+            <input type="text" class="form-control" placeholder="Nombre" aria-label="First name" required>
           </div>
 
           <div class="col p-1">
-            <input type="text" class="form-control" placeholder="Apellido" aria-label="Last name">
+            <input type="text" class="form-control" placeholder="Apellido" aria-label="Last name"required>
           </div>
 
           <div class="col-12 p-1">
-            <input type="text" class="form-control" placeholder="Correo" aria-label="Correo">
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Correo" aria-label="Correo"required>
           </div>
           
           <div class="col p-1">
             <label for="formGroupExampleInput" class="form-label">Cantidad</label>
-            <input type="text" class="form-control" id="cantidad" placeholder="Cantidad">
+            <input type="text" class="form-control" id="cantidad" placeholder="Cantidad"required>
           </div>
 
           <div class="col p-1">
             <label for="formGroupExampleInput" class="form-label">Categoria</label>
-            <select id="categoria" class="form-select" aria-label="Default select example">
+            <select id="categoria" class="form-select" aria-label="Default select example"required>
                 <option value="estudiante">Estudiante</option>
                 <option value="trainee">Trainee</option>
                 <option value="junior">Junior</option>
@@ -104,10 +105,33 @@
           </div>
           <div class="row p-0 m-0">
           <button type="button" class="btn btn verde col m-1" id="botonBorrar">Borrar</button>
-          <button type="button" class="btn btn verde col m-1"id="botonResumen">Resumen</button>
+          <button type="submit" class="btn btn verde col m-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Resumen
+          </button>
+          
           </div>
         </div>
     </form>
+
+    
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">¡Gracias por tu interes!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Las compras todavia no estan habilitadas, pero si queres pasame los datos de tu tarjeta
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Toma mi dinero</button>
+      </div>
+    </div>
+  </div>
+</div>
 
       
       <footer class="d-flex justify-content-center py-4 pie">
@@ -125,18 +149,21 @@
       </footer>
 
       <script>
-          const valorDeTicket  = 200;
-          const descEstudiante = valorDeTicket*0.2
-          const descTrainee = valorDeTicket*0.5 
-          const descJunior = valorDeTicket*0.85
+        //si quiero modificar precio o descuento lo manejo solo de aca
+          let valorDeTicket  = document.getElementById('precio');
+            valorDeTicket.textContent="200"
+            
+          let descEstudiante = document.getElementById('descEstudiante')
+            descEstudiante.textContent="80%"
+   
+          let descTrainee = document.getElementById('descTrainee')
+          descTrainee.textContent="50%"
 
-          console.log(valorDeTicket)
-          console.log(descEstudiante)
-          console.log(descTrainee)
-          console.log(descJunior)
+          let descJunior = document.getElementById('descJunior')
+          descJunior.textContent="15%"
 
 
-          let calculaTotal = evento => { 
+           let calculaTotal = evento => { 
             evento.preventDefault();   
 
             let cantidad = parseInt((document.querySelector("input[placeholder='Cantidad']")).value)                      
@@ -144,13 +171,13 @@
             let costoFinal   
 
             if (categoria == "estudiante"){
-              costoFinal = descEstudiante * cantidad
+              costoFinal = (parseInt(valorDeTicket.textContent)-(parseInt(valorDeTicket.textContent)*(parseInt(descEstudiante.textContent))/100)) * cantidad
             }
             else if (categoria =="trainee"){
-              costoFinal = descTrainee * cantidad
+              costoFinal = (parseInt(valorDeTicket.textContent)-(parseInt(valorDeTicket.textContent)*(parseInt(descTrainee.textContent))/100)) * cantidad
             }
             else{
-              costoFinal = descJunior * cantidad
+              costoFinal = (parseInt(valorDeTicket.textContent)-(parseInt(valorDeTicket.textContent)*(parseInt(descJunior.textContent))/100)) * cantidad
             }
 
             let completarTotal = document.querySelector("input[aria-label='totalAPagar']")
@@ -158,36 +185,24 @@
 
            }
 
-       let borraTodo = evento => { 
+      
+
+        let borraTodo = evento => { 
             evento.preventDefault(); 
             document.getElementById('formularioEntero').reset()
          }  
 
-          const submit = document.getElementById('botonResumen')
-          submit.addEventListener('click',calculaTotal)
-
+          let algoCambio = document.getElementById('formularioEntero')
+          algoCambio.addEventListener('change',calculaTotal)
+          
           const borrar = document.getElementById('botonBorrar')
           borrar.addEventListener('click',borraTodo)
-          
-          
-      
-      
-
-
-
-
-                        
-
 
           
-          
-       
+
       </script> 
 
-
-      
-
-        
+  
         <script src="" async defer></script>
         
         <!-- JavaScript Bundle with Popper -->
