@@ -105,7 +105,7 @@
           </div>
           <div class="row p-0 m-0">
           <button type="button" class="btn btn verde col m-1" id="botonBorrar">Borrar</button>
-          <button type="submit" class="btn btn verde col m-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          <button type="submit" class="btn btn verde col m-1" id="botonSubmit"  >
             Resumen
           </button>
           
@@ -116,7 +116,7 @@
     
 
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -187,7 +187,7 @@
 
       
 
-        let borraTodo = evento => { 
+          let borraTodo = evento => { 
             evento.preventDefault(); 
             document.getElementById('formularioEntero').reset()
          }  
@@ -198,7 +198,16 @@
           const borrar = document.getElementById('botonBorrar')
           borrar.addEventListener('click',borraTodo)
 
-          
+          let mostrarModal= evento =>  {
+           event.preventDefault();
+           const saltaModal = new bootstrap.Modal('#myModal' )
+           saltaModal.show()
+          }
+
+        const form = document.getElementById('formularioEntero');
+        form.addEventListener('submit', mostrarModal);
+
+
 
       </script> 
 
